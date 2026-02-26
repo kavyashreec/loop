@@ -33,7 +33,7 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   firebase_core: ^2.30.0
-  firebase_auth: ^4.17.4
+  firebase_auth: ^4.20.0
   cloud_firestore: ^4.17.3
 
 dev_dependencies:
@@ -50,13 +50,13 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/images/loop_logo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

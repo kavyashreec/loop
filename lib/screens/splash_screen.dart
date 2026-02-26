@@ -14,7 +14,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -31,36 +30,20 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-            /// YOUR LOGO
-            Image.asset(
-              "assets/images/loop_logo.png",
-              height: 120,
-            ),
-
-            SizedBox(height: 24),
-
-            /// APP NAME
+            Icon(Icons.loop, color: Colors.white, size: 80),
+            SizedBox(height: 20),
             Text(
               "LOOP",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                letterSpacing: 2,
               ),
             ),
-
-            SizedBox(height: 12),
-
-            /// TAGLINE
+            SizedBox(height: 10),
             Text(
               "Circular Solutions for Industrial",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: 14,
-              ),
+              style: TextStyle(color: Colors.white70),
             ),
           ],
         ),

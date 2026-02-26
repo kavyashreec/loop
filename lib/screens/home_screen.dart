@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import '../core/colors.dart';
+import 'marketplace_screen.dart';
+import 'add_listing_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-  Widget infoCard({
-    required String title,
-    required Widget child,
-  }) {
+  Widget infoCard({required Widget child}) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.all(18),
+        height: 190,
+        padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(18),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: 10,
@@ -32,23 +33,20 @@ class HomeScreen extends StatelessWidget {
     required bool primary,
   }) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
-      padding: EdgeInsets.all(18),
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: primary ? AppColors.primary : Colors.white,
         borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-          )
+        boxShadow: const [
+          BoxShadow(color: Colors.black12, blurRadius: 8)
         ],
       ),
       child: Row(
         children: [
           Icon(Icons.business,
               color: primary ? Colors.white : AppColors.primary),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,13 +59,11 @@ class HomeScreen extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   subtitle,
                   style: TextStyle(
-                    color: primary
-                        ? Colors.white70
-                        : Colors.grey,
+                    color: primary ? Colors.white70 : Colors.grey,
                   ),
                 ),
               ],
@@ -90,7 +86,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(Icons.menu, color: Colors.black),
+        leading: const Icon(Icons.menu, color: Colors.black),
         centerTitle: true,
         title: Text(
           "LOOP",
@@ -99,58 +95,41 @@ class HomeScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          Stack(
-            children: [
-              Icon(Icons.notifications_none,
-                  color: Colors.black),
-              Positioned(
-                right: 0,
-                child: Container(
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              )
-            ],
-          ),
-          SizedBox(width: 16),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: Icon(Icons.notifications_none,
+                color: Colors.black),
+          )
         ],
       ),
 
       /// BODY
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
-
-            /// WELCOME
-            Text(
+            const Text(
               "Welcome back, Alex",
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 6),
-            Text(
+            const SizedBox(height: 6),
+            const Text(
               "Industrial Operations Manager • Plant A",
               style: TextStyle(color: Colors.grey),
             ),
+            const SizedBox(height: 24),
 
-            SizedBox(height: 24),
-
-            /// TWO CARDS
+            /// INFO CARDS
             Row(
               children: [
-
                 infoCard(
-                  title: "Circular Score",
                   child: Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: 10),
                       Stack(
                         alignment: Alignment.center,
                         children: [
@@ -165,51 +144,55 @@ class HomeScreen extends StatelessWidget {
                                   Colors.grey.shade300,
                             ),
                           ),
-                          Text(
+                          const Text(
                             "85\n/100",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontWeight: FontWeight.bold),
+                                fontWeight:
+                                    FontWeight.bold),
                           )
                         ],
                       ),
-                      SizedBox(height: 12),
-                      Text(
+                      const SizedBox(height: 12),
+                      const Text(
                         "+5.2% this month",
                         style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.green,
+                          fontWeight:
+                              FontWeight.bold,
+                        ),
                       )
                     ],
                   ),
                 ),
-
-                SizedBox(width: 16),
-
+                const SizedBox(width: 16),
                 infoCard(
-                  title: "CO2 Saved",
                   child: Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment.center,
                     crossAxisAlignment:
                         CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "1.2 Tons",
                         style: TextStyle(
                             fontSize: 22,
-                            fontWeight: FontWeight.bold),
+                            fontWeight:
+                                FontWeight.bold),
                       ),
                       SizedBox(height: 6),
                       Text(
                         "Equivalent to 48 trees",
-                        style:
-                            TextStyle(color: Colors.grey),
+                        style: TextStyle(
+                            color: Colors.grey),
                       ),
                       SizedBox(height: 12),
                       Text(
                         "+0.1T today",
                         style: TextStyle(
                             color: Colors.green,
-                            fontWeight: FontWeight.bold),
+                            fontWeight:
+                                FontWeight.bold),
                       )
                     ],
                   ),
@@ -217,17 +200,15 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
-            /// QUICK ACTIONS
-            Text(
+            const Text(
               "Quick Actions",
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
             ),
-
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             quickAction(
               title: "Sell Waste",
@@ -235,86 +216,44 @@ class HomeScreen extends StatelessWidget {
                   "Convert industrial by-products to revenue",
               primary: true,
             ),
-
             quickAction(
               title: "Rent Assets",
               subtitle:
                   "Lease machinery during downtime",
               primary: false,
             ),
-
             quickAction(
               title: "Sell Surplus",
               subtitle:
                   "List excess inventory & materials",
               primary: false,
             ),
-
-            SizedBox(height: 20),
-
-            /// RECENT ACTIVITY
-            Text(
-              "Recent Activity",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
-
-            SizedBox(height: 12),
-
-            Container(
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius:
-                    BorderRadius.circular(16),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.local_shipping,
-                      color: AppColors.primary),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Waste Collection Scheduled",
-                          style: TextStyle(
-                              fontWeight:
-                                  FontWeight.bold),
-                        ),
-                        Text(
-                          "Order #8821 • Aluminum Scrap",
-                          style: TextStyle(
-                              color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Text("2h ago",
-                      style:
-                          TextStyle(color: Colors.grey))
-                ],
-              ),
-            ),
           ],
         ),
       ),
 
-      /// FLOATING BUTTON
+      /// FAB (WHITE PLUS)
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primary,
-        onPressed: () {},
-        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => AddListingScreen(),
+            ),
+          );
+        },
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,
 
-      /// BOTTOM NAV
+      /// BOTTOM NAVIGATION
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 8,
         child: Padding(
           padding:
@@ -324,19 +263,34 @@ class HomeScreen extends StatelessWidget {
                 MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                  icon: Icon(Icons.home,
-                      color: AppColors.primary),
-                  onPressed: () {}),
+                icon: Icon(Icons.home,
+                    color: AppColors.primary),
+                onPressed: () {},
+              ),
               IconButton(
-                  icon: Icon(Icons.storefront),
-                  onPressed: () {}),
-              SizedBox(width: 40),
+                icon: const Icon(Icons.storefront,
+                    color: Colors.grey),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          const MarketplaceScreen(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: 40),
               IconButton(
-                  icon: Icon(Icons.receipt_long),
-                  onPressed: () {}),
+                icon: const Icon(Icons.history,
+                    color: Colors.grey),
+                onPressed: () {},
+              ),
               IconButton(
-                  icon: Icon(Icons.person),
-                  onPressed: () {}),
+                icon: const Icon(Icons.person,
+                    color: Colors.grey),
+                onPressed: () {},
+              ),
             ],
           ),
         ),

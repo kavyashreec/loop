@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../core/colors.dart';
 import '../home_screen.dart';
+import 'register_step1.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
 
-                /// LOGO (YOUR IMAGE)
+                /// LOGO
                 Image.asset(
                   "assets/images/loop_logo.png",
                   height: 60,
@@ -149,7 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         horizontal: 16, vertical: 14),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscure ? Icons.visibility_off : Icons.visibility,
+                        _obscure
+                            ? Icons.visibility_off
+                            : Icons.visibility,
                         color: Colors.grey,
                       ),
                       onPressed: () {
@@ -167,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 32),
 
-                /// BUTTON
+                /// LOGIN BUTTON
                 _loading
                     ? const CircularProgressIndicator()
                     : SizedBox(
@@ -180,7 +183,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             foregroundColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius:
+                                  BorderRadius.circular(16),
                             ),
                           ),
                           child: const Text(
@@ -189,7 +193,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 0.5,
-                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -197,12 +200,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 24),
 
+                /// CREATE ACCOUNT
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("New here? "),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => RegisterStep1(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "Create Account",
                         style: TextStyle(
@@ -210,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],
